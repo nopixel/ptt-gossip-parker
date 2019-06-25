@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Ptt Gossiping 關鍵字文章參與度</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="./data.js"></script>
+</head>
+
+<body>
+    <h1 id="title"></h1>
+	<div>
+		*參與文章指的是有在文章中推文或是作者本人<br>
+		*不列出參與文章數小於 5 篇的人
+	</div>
+	<div id="content">
+
+	</div>
+	<script>
+		function renderMeta(jsonMeta) {
+            var couterArray = [];
+            for(var key in jsonMeta) {
+                meta = []
+                meta.push(key)
+                meta.push(jsonMeta[key])
+                couterArray.push(meta)
+            }
+            couterArray.sort(function(m1, m2){
+                return m2[1] - m1[1];
+            });
+			var str = "<table>";
+			str += "<tr style=background-color:#ccc><td>帳號 id</td><td>參與文章數</td></tr>";
+			for(var i = 0 ; i < couterArray.length ; i++) {
+                if (couterArray[i][1] < 5) {
+                    continue;
+                }
+				str += genTableRowByItem(couterArray[i][0], couterArray[i][1]);
+			}	
+
+			str += "</table>";
+			document.getElementById('content').innerHTML = str;
+		}
+
+		function genTableRowByItem(accId, counter) {
+			var str = "<tr>";
+			str += "<td>" + accId + "</td>";
+			str += "<td>" + counter + "</td>";
+			str += "</tr>";
+			return str;
+        }
+        
+        document.getElementById('title').innerHTML = "「" + metadata.keyword + "」查詢結果, 分析最近 " + metadata.total + " 篇文章";
+		renderMeta(metadata.villagers);
+	</script>
+</body>
+
+
+</html>
