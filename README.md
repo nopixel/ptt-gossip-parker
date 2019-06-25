@@ -7,8 +7,17 @@ PTT 八卦板鄉民參與度統計
   
   
 ### 執行
+若有 python 環境，則可直接 clone source 並執行：  
 ```
 python3 parker.py 關鍵字
+```
+若無，則可直接從[此處下載](https://github.com/nopixel/ptt-gossip-parker/releases) Binary 檔，並在 command line 執行
+```
+# win command 
+./parker.exe 關鍵字
+
+# mac command 
+./parker 關鍵字
 ```
 
 ### 輸出
